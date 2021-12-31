@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+
     <Header/>
     <Cart/>
     <PreviewList/>
@@ -13,7 +14,8 @@ import PreviewList from '@/components/PreviewList';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Catalog from './components/Catalog';
-import Cart from './components/Cart'
+import Cart from './components/Cart';
+
 
 export default {
   name: 'App',

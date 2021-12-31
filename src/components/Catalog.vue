@@ -19,12 +19,12 @@ export default {
   data() {
     return {
       products: [
-        {name: "Sofa-1", id: "sofa1", img: "", price: "50000"},
-        {name: "Sofa-2", id: "sofa2", img: "", price: "80000"},
-        {name: "Sofa-3", id: "sofa3", img: "", price: "55000"},
-        {name: "Sofa-4", id: "sofa4", img: "", price: "100000"},
-        {name: "Sofa-5", id: "sofa5", img: "", price: "180000"},
-        {name: "Sofa-6", id: "sofa6", img: "", price: "100000"}
+        {name: "Sofa-1", id: "sofa1", img: "", price: "50000", stock: "1"},
+        {name: "Sofa-2", id: "sofa2", img: "", price: "80000", stock: "1"},
+        {name: "Sofa-3", id: "sofa3", img: "", price: "55000", stock: "2"},
+        {name: "Sofa-4", id: "sofa4", img: "", price: "100000", stock: "1"},
+        {name: "Sofa-5", id: "sofa5", img: "", price: "180000", stock: "0"},
+        {name: "Sofa-6", id: "sofa6", img: "", price: "100000", stock: "2"}
       ]
     }
   }

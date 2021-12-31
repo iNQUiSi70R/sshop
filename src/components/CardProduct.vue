@@ -3,7 +3,12 @@
       <WindowDialog
           v-if="modalVisible"
           @closeModal="closeModal"
-      />
+          :dialogTitle="product_data.name"
+      >
+        <p> В наличии: {{product_data.stock}}</p>
+        <p class="cardInPrice"> Цена: {{product_data.price}} Р.</p>
+
+      </WindowDialog>
       <div class="sliderban">
         <div class="slide">
           <input type="radio" name="sr" id="s1" checked>
@@ -48,18 +53,11 @@ export default {
   },
   data() {
     return {
-      modalVisible: false
     }
   },
-  methods:{
-    showModal() {
-        this.modalVisible = true
-    },
-    closeModal() {
-      this.modalVisible = false
-    },
+  methods: {
     addToCart() {
-      this.$emit('addToCart',this.product_data)
+      this.$emit('addToCart', this.product_data)
     }
   }
 }

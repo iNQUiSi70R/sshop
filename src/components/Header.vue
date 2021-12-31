@@ -1,22 +1,28 @@
 <template>
   <div class="header">
+    <WindowDialog
+        v-if="modalVisible"
+        @closeModal="closeModal"
+    />
     <ul>
       <li><div class="logo"><img src="../../public/79773.png" class="pic_logo_sofa">
         <img src="../../public/1232362.png" class="pic_logo_royal">
         <a>RoyalSofa</a></div></li>
       <li><a>Каталог</a></li>
-      <li><a>Доставка</a></li>
-      <li><a>О сервисе</a></li>
+      <li><a @click="showModal">Доставка</a></li>
+      <li><a @click="showModal">О сервисе</a></li>
       <div class="ShopBasket"></div>
     </ul>
   </div>
 </template>
 
 <script>
+import WindowDialog from "@/components/WindowDialog";
 
 export default {
   name: 'App',
   components: {
+    WindowDialog
   },
   data() {
     return {}

@@ -1,41 +1,47 @@
 <template>
-    <div class="windowDialog">
+    <div class="windowDialog" ref="windowDialog">
       <div class="dialog">
         <div class="dialog__header">
-          <p>Name</p>
+          <p>{{dialogTitle}}</p>
           <button class="close-Modal_Btn" @click="closeModal">X</button>
         </div>
         <div class="dialog__content">
-          <p></p>
           <slot></slot>
         </div>
       </div>
     </div>
 </template>
-<!--
-    <button @click="showDialog"></button>
-    <WindowDialog
-        v-model:="dialogVisible"
-    />
-    dialogVisible: false
-    showModal() {
-      this.dialogVisible = true;
-    }
--->
 <script>
 export default {
   name: "WindowDialog",
   props: {
+    dialogTitle: {
+      type: String,
+      default: 'Name'
+    },
     show: {
       type: Boolean,
       default: false
 
-    }
+    },
+
   },
   methods: {
     closeModal() {
       this.$emit('closeModal')
     }
+  },
+  mounted() {
+    let th = this;
+    document.addEventListener('click', function (item){
+      if (item.target === th.$refs['windowDialog'])
+        th.closeModal()
+    })
+    document.addEventListener("keydown", function (e) {
+      if (e.which === 27) {
+        th.closeModal()
+      }
+    })
   }
 }
 </script>
@@ -56,8 +62,10 @@ export default {
   margin: auto;
   background: white;
   border-radius: 15px;
+  max-width: 900px;
+  max-height: 600px;
   min-width: 200px;
-  min-height: 50px;
+  min-height: 100px;
   padding: 20px;
 }
 .dialog__header {
