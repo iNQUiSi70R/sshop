@@ -1,11 +1,17 @@
 <template>
   <div id="app">
-
     <Header/>
-    <Cart/>
     <PreviewList/>
     <Catalog/>
     <Footer/>
+    <WindowDialog
+        v-if="$root.modalData.visible"
+        :component="$root.modalComponent"
+        @closeModal="closeModal"
+        :dialogTitle="title"
+
+    >
+    </WindowDialog>
   </div>
 </template>
 
@@ -14,25 +20,29 @@ import PreviewList from '@/components/PreviewList';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Catalog from './components/Catalog';
-import Cart from './components/Cart';
+import WindowDialog from "@/components/WindowDialog";
 
+import ModalWindow from "@/plugins/ModalWindow";
+import Vue from "vue";
+Vue.use(ModalWindow)
 
 export default {
+  data() {
+    return{
+      title: 'Товар',
+    }
+  },
   name: 'App',
   components: {
     Footer,
     Header,
     PreviewList,
     Catalog,
-    Cart
-  },
-  data() {
-    return {
-      cart: []
-    }
+    WindowDialog
   },
   methods: {
-  }
+
+  },
 }
 </script>
 

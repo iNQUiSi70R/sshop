@@ -1,14 +1,16 @@
 <template>
     <div class="ProductCard">
-      <WindowDialog
+      <!-- <WindowDialog
           v-if="modalVisible"
           @closeModal="closeModal"
           :dialogTitle="product_data.name"
+          :product_data="this.product_data"
+          :key="this.product_data.id"
       >
         <p> В наличии: {{product_data.stock}}</p>
         <p class="cardInPrice"> Цена: {{product_data.price}} Р.</p>
 
-      </WindowDialog>
+      </WindowDialog> -->
       <div class="sliderban">
         <div class="slide">
           <input type="radio" name="sr" id="s1" checked>
@@ -30,17 +32,16 @@
       </div>
       <div class="info">
         <p>{{product_data.name}}</p>
-        <button class="toCartButton" @click="showModal">В корзину</button>
+        <button class="showInfo" @click="show">Подробнее</button>
+        <button class="toCartButton" @click="showConfirm">В корзину</button>
       </div>
     </div>
 </template>
 
 <script>
-import WindowDialog from "@/components/WindowDialog";
 export default {
   name: '',
   components: {
-    WindowDialog
   },
   props: {
     msg: String,
@@ -52,12 +53,23 @@ export default {
     }
   },
   data() {
+    console.log(this.$modalVisible)
     return {
     }
   },
   methods: {
-    addToCart() {
+    /* addToCart() {
       this.$emit('addToCart', this.product_data)
+    },*/
+    show() {
+      this.showModal({
+        component: '/CardProduct.vue'
+      })
+    },
+    showConfirm () {
+      this.showModal( {
+        component: '/ConfirmDialog.vue'
+      })
     }
   }
 }

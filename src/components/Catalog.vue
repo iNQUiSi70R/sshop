@@ -3,8 +3,7 @@
         <CardProduct
             v-for="product in products"
             :key="product.id"
-            v-bind:product_data="product"
-            @addToCart="addToCard"
+            :product_data="product"
         />
     </div>
 </template>
@@ -27,7 +26,7 @@ export default {
         {name: "Sofa-6", id: "sofa6", img: "", price: "100000", stock: "2"}
       ]
     }
-  }
+  },
 }
 </script>
 

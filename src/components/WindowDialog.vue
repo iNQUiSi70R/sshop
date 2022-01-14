@@ -6,7 +6,12 @@
           <button class="close-Modal_Btn" @click="closeModal">X</button>
         </div>
         <div class="dialog__content">
+          <component
+              :is="component"
+
+          >
           <slot></slot>
+          </component>
         </div>
       </div>
     </div>
@@ -15,33 +20,28 @@
 export default {
   name: "WindowDialog",
   props: {
+    component: String,
     dialogTitle: {
       type: String,
       default: 'Name'
     },
-    show: {
-      type: Boolean,
-      default: false
-
+    product_data: {
+      type: Object,
+      default() {
+        return {}
+      }
     },
-
   },
   methods: {
     closeModal() {
       this.$emit('closeModal')
+    },
+    showConfirm () {
+      this.showModal( {
+        component: '/ConfirmDialog.vue'
+
+      })
     }
-  },
-  mounted() {
-    let th = this;
-    document.addEventListener('click', function (item){
-      if (item.target === th.$refs['windowDialog'])
-        th.closeModal()
-    })
-    document.addEventListener("keydown", function (e) {
-      if (e.which === 27) {
-        th.closeModal()
-      }
-    })
   }
 }
 </script>

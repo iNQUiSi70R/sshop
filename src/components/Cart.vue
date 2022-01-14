@@ -5,7 +5,6 @@
     </div>
     <div class="Cart__body">
        <CartItem
-           v-on:
        />
     </div>
   </div>
@@ -17,7 +16,7 @@ export default {
   name: "Cart",
   props: {
     cart_data: {
-      type: Array,
+      type: Object,
       default() {
         return {}
       }
